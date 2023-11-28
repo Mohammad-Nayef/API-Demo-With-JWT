@@ -25,7 +25,14 @@ namespace JWT.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
+        /// <summary>
+        /// Get a message using custom token authorization
+        /// </summary>
+        /// <response code="200">String message</response>
         [HttpGet("custom-auth")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetCustomAuth()
         {
             if (!ValidateAuthorization())
@@ -40,14 +47,28 @@ namespace JWT.Controllers
             return _tokenGenerator.ValidateToken(authorizationToken);
         }
 
+        /// <summary>
+        /// Get a message using the default token authorization
+        /// </summary>
+        /// <response code="200">String message</response>
         [Authorize]
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get()
         {
             return Ok("You are authorized! Enjoy your cup of tea.");
         }
 
+        /// <summary>
+        /// Register a new user
+        /// </summary>
+        /// <param name="userRegister"></param>
+        /// <response code="200">Bearer token for authorization</response>        
         [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Register(UserRegisterDTO userRegister)
         {
             var user = _mapper.Map<UserDTO>(userRegister);
@@ -59,7 +80,15 @@ namespace JWT.Controllers
             return Ok(new { BearerToken = token });
         }
 
+        /// <summary>
+        /// Login to an existing user account
+        /// </summary>
+        /// <param name="userLogin"></param>
+        /// <response code="200">Bearer token for authorization</response>
         [HttpPost("login")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Login(UserLoginDTO userLogin)
         {
             var user = AuthenticateUser(userLogin);
