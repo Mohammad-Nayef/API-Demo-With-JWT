@@ -59,5 +59,36 @@ namespace JWT.Controllers
             return Ok(new { BearerToken = token });
         }
 
+        [HttpPost("login")]
+        public IActionResult Login(UserLoginDTO userLogin)
+        {
+            var user = AuthenticateUser(userLogin);
+
+            if (user == null)
+                return Unauthorized();
+
+            var userWithoutPassword = _mapper.Map<UserWithoutPasswordDTO>(user);
+            var token = _tokenGenerator.GenerateToken(userWithoutPassword);
+
+            return Ok(new { BearerToken = token });
+        }
+
+        /// <summary>
+        /// To determine where the user credentials are authenticated or not.
+        /// </summary>
+        /// <returns>The authenticated user or null if not authenticated</returns>
+        private UserDTO AuthenticateUser(UserLoginDTO userLogin)
+        {
+            var user = _userService.GetAll().FirstOrDefault(user =>
+            {
+                if (user.Username == userLogin.Username &&
+                    user.Password == userLogin.Password)
+                    return true;
+
+                return false;
+            });
+
+            return user;
+        }
     }
 }
