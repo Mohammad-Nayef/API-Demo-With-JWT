@@ -45,7 +45,10 @@ namespace MinimalApiWithJwt.Services
                     .Replace("Bearer ", string.Empty);
 
                 var tokenHandler = new JwtSecurityTokenHandler();
-                tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+                tokenHandler.ValidateToken(
+                    token, 
+                    validationParameters, 
+                    out SecurityToken validatedToken);
                 return true;
             }
             catch
