@@ -39,5 +39,12 @@ namespace JWT.Controllers
             var authorizationToken = Request.Headers["Authorization"];
             return _tokenGenerator.ValidateToken(authorizationToken);
         }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("You are authorized! Enjoy your cup of tea.");
+        }
     }
 }
