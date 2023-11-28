@@ -1,8 +1,8 @@
 ﻿namespace MinimalApiWithJwt.Models
 {
-    public class UserCredentialsWithoutPasswordDTO
+    public class UserWithoutPasswordDTO
     {
-        public Guid Id = Guid.NewGuid();
+        public Guid Id { get; }
         public string Username { get; set; }
         public string FavoriteDrink { get; set; }
     }
