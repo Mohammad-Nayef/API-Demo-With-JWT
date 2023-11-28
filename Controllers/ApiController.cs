@@ -46,5 +46,18 @@ namespace JWT.Controllers
         {
             return Ok("You are authorized! Enjoy your cup of tea.");
         }
+
+        [HttpPost("register")]
+        public IActionResult Register(UserRegisterDTO userRegister)
+        {
+            var user = _mapper.Map<UserDTO>(userRegister);
+            _userService.Add(user);
+
+            var userWithoutPassword = _mapper.Map<UserWithoutPasswordDTO>(user);
+            var token = _tokenGenerator.GenerateToken(userWithoutPassword);
+
+            return Ok(new { BearerToken = token });
+        }
+
     }
 }
