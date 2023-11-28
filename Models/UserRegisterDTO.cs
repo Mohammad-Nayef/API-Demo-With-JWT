@@ -6,7 +6,7 @@ namespace MinimalApiWithJwt.Models
     {
         [Required]
         public string Username { get; set; }
-        public string FavoriteDrink { get; set; }
+        public string? FavoriteDrink { get; set; }
         [Required]
         public string Password { get; set; }
     }
