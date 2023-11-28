@@ -7,8 +7,8 @@ namespace MinimalApiWithJwt.Profiles
     {
         public UserCredentialsProfile()
         {
-            CreateMap<UserCredentialsForCreationDTO, UserCredentialsDTO>();
-            CreateMap<UserCredentialsDTO, UserCredentialsWithoutPasswordDTO>();
+            CreateMap<UserRegisterDTO, UserDTO>();
+            CreateMap<UserDTO, UserWithoutPasswordDTO>();
         }
     }
 }
