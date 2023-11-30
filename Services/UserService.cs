@@ -5,21 +5,21 @@ namespace MinimalApiWithJwt.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository _repository;
+        private IUserRepository _userRepository;
 
-        public UserService(IUserRepository repository)
+        public UserService(IUserRepository userRepository)
         {
-            _repository = repository;
+            _userRepository = userRepository;
         }
 
-        public void Add(UserDTO user) => _repository.Add(user);
+        public void Add(UserDTO user) => _userRepository.Add(user);
 
-        public UserDTO Get(Guid userId) => _repository.Get(userId);
+        public UserDTO Get(Guid userId) => _userRepository.Get(userId);
 
-        public IEnumerable<UserDTO> GetAll() => _repository.GetAll();
+        public IEnumerable<UserDTO> GetAll() => _userRepository.GetAll();
 
-        public void Update(UserDTO updatedUser) => _repository.Update(updatedUser);
+        public void Update(UserDTO updatedUser) => _userRepository.Update(updatedUser);
 
-        public bool Delete(UserDTO user) => _repository.Delete(user);
+        public bool Delete(UserDTO user) => _userRepository.Delete(user);
     }
 }
