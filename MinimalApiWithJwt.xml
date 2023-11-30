@@ -36,5 +36,38 @@
             </summary>
             <returns>The authenticated user or null if not authenticated</returns>
         </member>
+        <member name="T:MinimalApiWithJwt.Repositories.IUserRepository">
+            <summary>
+            Responsible for storing the users.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Add(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Adds a new user to the repository.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Delete(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Deletes a user from the repository.
+            </summary>
+            <returns>true if the user is successfully deleted; otherwise, false</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Get(System.Guid)">
+            <summary>
+            Gets a user by his Id value.
+            </summary>
+            <returns>UserDTO containing the needed user.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.GetAll">
+            <summary>
+            Gets all of the users stored in the repository.
+            </summary>
+            <returns>Collection of UserDTO.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Update(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Finds and update a user.
+            </summary>
+        </member>
     </members>
 </doc>
