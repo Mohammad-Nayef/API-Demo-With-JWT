@@ -20,6 +20,6 @@ namespace MinimalApiWithJwt.Services
 
         public void Update(UserDTO updatedUser) => _repository.Update(updatedUser);
 
-        public void Delete(UserDTO user) => _repository.Delete(user);
+        public bool Delete(UserDTO user) => _repository.Delete(user);
     }
 }

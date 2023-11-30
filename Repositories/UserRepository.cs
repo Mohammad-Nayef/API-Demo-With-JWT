@@ -18,6 +18,6 @@ namespace MinimalApiWithJwt.Repositories
             user = updatedUser;
         }
 
-        public void Delete(UserDTO user) => _users.Remove(user);
+        public bool Delete(UserDTO user) => _users.Remove(user);
     }
 }
