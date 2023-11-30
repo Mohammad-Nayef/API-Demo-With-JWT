@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MinimalApiWithJwt.Extensions;
 using MinimalApiWithJwt.Models;
 using MinimalApiWithJwt.Services;
 
@@ -108,16 +109,7 @@ namespace JWT.Controllers
         /// <returns>The authenticated user or null if not authenticated</returns>
         private UserDTO AuthenticateUser(UserLoginDTO userLogin)
         {
-            var user = _userService.GetAll().FirstOrDefault(user =>
-            {
-                if (user.Username == userLogin.Username &&
-                    user.Password == userLogin.Password)
-                    return true;
-
-                return false;
-            });
-
-            return user;
+            return userLogin.FindUserByCredentials(_userService);
         }
     }
 }
