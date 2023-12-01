@@ -24,7 +24,7 @@ namespace MinimalApiWithJwt.Services
             double expirationMinutes;
 
             if (!double.TryParse(_config["Jwt:ExpirationMinutes"], out expirationMinutes))
-                throw new InvalidCastException("Invalid 'Jwt:ExpirationMinutes' in appsettings.json")
+                throw new InvalidCastException("Invalid 'Jwt:ExpirationMinutes' in appsettings.json");
 
             var token = new JwtSecurityToken(
                 expires: DateTime.Now.AddMinutes(expirationMinutes),
