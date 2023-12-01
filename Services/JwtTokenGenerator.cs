@@ -18,9 +18,13 @@ namespace MinimalApiWithJwt.Services
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            double expirationMinutes;
+
+            if (!double.TryParse(_config["Jwt:ExpirationMinutes"], out expirationMinutes))
+                throw new InvalidCastException("Invalid 'Jwt:ExpirationMinutes' in appsettings.json")
 
             var token = new JwtSecurityToken(
-                expires: DateTime.Now.AddMinutes(10),
+                expires: DateTime.Now.AddMinutes(expirationMinutes),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
