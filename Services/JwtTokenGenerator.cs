@@ -5,6 +5,9 @@ using MinimalApiWithJwt.Models;
 
 namespace MinimalApiWithJwt.Services
 {
+    /// <summary>
+    /// Responsible for dealing with JWT as an authorization token.
+    /// </summary>
     public class JwtTokenGenerator : ITokenGenerator
     {
         private readonly IConfiguration _config;
