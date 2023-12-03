@@ -109,7 +109,7 @@ namespace JWT.Controllers
         /// <returns>The authenticated user or null if not authenticated</returns>
         private UserDTO AuthenticateUser(UserLoginDTO userLogin)
         {
-            return userLogin.FindUserByCredentials(_userService);
+            return _userService.GetAll().Matches(userLogin);
         }
     }
 }

@@ -1,15 +1,13 @@
 ﻿using MinimalApiWithJwt.Models;
-using MinimalApiWithJwt.Services;
 
 namespace MinimalApiWithJwt.Extensions
 {
-    public static class UserFinding
+    public static class UserExtensions
     {
-        public static UserDTO FindUserByCredentials(
-            this UserLoginDTO userLogin, 
-            IUserService userService)
+        public static UserDTO Matches(
+            this IEnumerable<UserDTO> users, UserLoginDTO userLogin)
         {
-            return userService.GetAll().FirstOrDefault(user =>
+            return users.FirstOrDefault(user =>
             {
                 if (user.Username == userLogin.Username &&
                     user.Password == userLogin.Password)
