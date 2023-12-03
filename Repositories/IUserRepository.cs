@@ -3,7 +3,7 @@
 namespace MinimalApiWithJwt.Repositories
 {
     /// <summary>
-    /// Responsible for storing the users.
+    /// Responsible for managing user data and do CRUD operations.
     /// </summary>
     public interface IUserRepository
     {
