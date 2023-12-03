@@ -4,17 +4,16 @@ namespace MinimalApiWithJwt.Extensions
 {
     public static class UserExtensions
     {
-        public static UserDTO Matches(
+        /// <summary>
+        /// Returns a user that matches the login credentials or null if none matched.
+        /// </summary>
+        public static UserDTO FindMatchingUser(
             this IEnumerable<UserDTO> users, UserLoginDTO userLogin)
         {
             return users.FirstOrDefault(user =>
-            {
-                if (user.Username == userLogin.Username &&
-                    user.Password == userLogin.Password)
-                    return true;
-
-                return false;
-            });
+                    user.Username == userLogin.Username &&
+                    user.Password == userLogin.Password
+                );
         }
     }
 }

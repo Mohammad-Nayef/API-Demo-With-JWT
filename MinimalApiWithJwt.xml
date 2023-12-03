@@ -36,9 +36,14 @@
             </summary>
             <returns>The authenticated user or null if not authenticated</returns>
         </member>
+        <member name="M:MinimalApiWithJwt.Extensions.UserExtensions.FindMatchingUser(System.Collections.Generic.IEnumerable{MinimalApiWithJwt.Models.UserDTO},MinimalApiWithJwt.Models.UserLoginDTO)">
+            <summary>
+            Returns a user that matches the login credentials or null if none matched.
+            </summary>
+        </member>
         <member name="T:MinimalApiWithJwt.Repositories.IUserRepository">
             <summary>
-            Responsible for storing the users.
+            Responsible for managing user data and do CRUD operations.
             </summary>
         </member>
         <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Add(MinimalApiWithJwt.Models.UserDTO)">
