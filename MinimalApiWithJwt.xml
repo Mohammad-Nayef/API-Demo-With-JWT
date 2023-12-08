@@ -21,14 +21,14 @@
             Register a new user
             </summary>
             <param name="userRegister"></param>
-            <response code="200">Bearer token for authorization</response>        
+            <response code="200">Token for authorization</response>        
         </member>
         <member name="M:JWT.Controllers.ApiController.Login(MinimalApiWithJwt.Models.UserLoginDTO)">
             <summary>
             Login to an existing user account
             </summary>
             <param name="userLogin"></param>
-            <response code="200">Bearer token for authorization</response>
+            <response code="200">Token for authorization</response>
         </member>
         <member name="M:JWT.Controllers.ApiController.AuthenticateUser(MinimalApiWithJwt.Models.UserLoginDTO)">
             <summary>

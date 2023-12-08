@@ -10,7 +10,7 @@ namespace MinimalApiWithJwt.Repositories
 
         public UserDTO Get(Guid userId) => _users.Find(user => user.Id == userId);
 
-        public IEnumerable<UserDTO> GetAll() => new List<UserDTO>(_users);
+        public List<UserDTO> GetAll() => new List<UserDTO>(_users);
 
         public void Update(UserDTO updatedUser)
         {

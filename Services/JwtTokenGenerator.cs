@@ -55,7 +55,7 @@ namespace MinimalApiWithJwt.Services
                 tokenHandler.ValidateToken(
                     token, 
                     validationParameters, 
-                    out SecurityToken validatedToken);
+                    out var validatedToken);
                 return true;
             }
             catch

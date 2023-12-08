@@ -66,7 +66,7 @@ namespace JWT.Controllers
         /// Register a new user
         /// </summary>
         /// <param name="userRegister"></param>
-        /// <response code="200">Bearer token for authorization</response>        
+        /// <response code="200">Token for authorization</response>        
         [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -78,14 +78,14 @@ namespace JWT.Controllers
             var userWithoutPassword = _mapper.Map<UserWithoutPasswordDTO>(user);
             var token = _tokenGenerator.GenerateToken(userWithoutPassword);
 
-            return Ok(new { BearerToken = token });
+            return Ok(new { Token = token });
         }
 
         /// <summary>
         /// Login to an existing user account
         /// </summary>
         /// <param name="userLogin"></param>
-        /// <response code="200">Bearer token for authorization</response>
+        /// <response code="200">Token for authorization</response>
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -100,7 +100,7 @@ namespace JWT.Controllers
             var userWithoutPassword = _mapper.Map<UserWithoutPasswordDTO>(user);
             var token = _tokenGenerator.GenerateToken(userWithoutPassword);
 
-            return Ok(new { BearerToken = token });
+            return Ok(new { Token = token });
         }
 
         /// <summary>

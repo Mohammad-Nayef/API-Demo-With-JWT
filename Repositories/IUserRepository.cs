@@ -28,7 +28,7 @@ namespace MinimalApiWithJwt.Repositories
         /// Gets all of the users stored in the repository.
         /// </summary>
         /// <returns>Collection of UserDTO.</returns>
-        IEnumerable<UserDTO> GetAll();
+        List<UserDTO> GetAll();
 
         /// <summary>
         /// Finds and update a user.
