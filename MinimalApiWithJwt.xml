@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MinimalApiWithJwt</name>
+    </assembly>
+    <members>
+        <member name="M:JWT.Controllers.ApiController.GetCustomAuth">
+            <summary>
+            Get a message using custom token authorization
+            </summary>
+            <response code="200">String message</response>
+        </member>
+        <member name="M:JWT.Controllers.ApiController.Get">
+            <summary>
+            Get a message using the default token authorization
+            </summary>
+            <response code="200">String message</response>
+        </member>
+        <member name="M:JWT.Controllers.ApiController.Register(MinimalApiWithJwt.Models.UserRegisterDTO)">
+            <summary>
+            Register a new user
+            </summary>
+            <param name="userRegister"></param>
+            <response code="200">Token for authorization</response>        
+        </member>
+        <member name="M:JWT.Controllers.ApiController.Login(MinimalApiWithJwt.Models.UserLoginDTO)">
+            <summary>
+            Login to an existing user account
+            </summary>
+            <param name="userLogin"></param>
+            <response code="200">Token for authorization</response>
+        </member>
+        <member name="M:JWT.Controllers.ApiController.AuthenticateUser(MinimalApiWithJwt.Models.UserLoginDTO)">
+            <summary>
+            To determine where the user credentials are authenticated or not.
+            </summary>
+            <returns>The authenticated user or null if not authenticated</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Extensions.UserExtensions.FindMatchingUser(System.Collections.Generic.IEnumerable{MinimalApiWithJwt.Models.UserDTO},MinimalApiWithJwt.Models.UserLoginDTO)">
+            <summary>
+            Returns a user that matches the login credentials or null if none matched.
+            </summary>
+        </member>
+        <member name="T:MinimalApiWithJwt.Repositories.IUserRepository">
+            <summary>
+            Responsible for managing user data and do CRUD operations.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Add(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Adds a new user to the repository.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Delete(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Deletes a user from the repository.
+            </summary>
+            <returns>true if the user is successfully deleted; otherwise, false</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Get(System.Guid)">
+            <summary>
+            Gets a user by his Id value.
+            </summary>
+            <returns>UserDTO containing the needed user.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.GetAll">
+            <summary>
+            Gets all of the users stored in the repository.
+            </summary>
+            <returns>Collection of UserDTO.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Repositories.IUserRepository.Update(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Finds and update a user.
+            </summary>
+        </member>
+        <member name="T:MinimalApiWithJwt.Services.ITokenGenerator">
+            <summary>
+            Responsible for dealing with web tokens for authorizing requests.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.ITokenGenerator.GenerateToken(MinimalApiWithJwt.Models.UserWithoutPasswordDTO)">
+            <summary>
+            Generates a web token based on the user.
+            </summary>
+            <returns>String value of the token.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.ITokenGenerator.ValidateToken(System.String)">
+            <summary>
+            Checks whether the token is valid and didn't expire yet.
+            </summary>
+            <param name="token">A web token to be validated.</param>
+            <returns>true if the token is valid; otherwise, false.</returns>
+        </member>
+        <member name="T:MinimalApiWithJwt.Services.IUserService">
+            <summary>
+            Responsible for provide client code to deal with the users repository.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.IUserService.Add(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Adds a new user to the repository.
+            </summary>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.IUserService.Delete(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Deletes a user from the repository.
+            </summary>
+            <returns>true if the user is successfully deleted; otherwise, false</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.IUserService.Get(System.Guid)">
+            <summary>
+            Gets a user by his Id value.
+            </summary>
+            <returns>UserDTO containing the needed user.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.IUserService.GetAll">
+            <summary>
+            Gets all of the users stored in the repository.
+            </summary>
+            <returns>Collection of UserDTO.</returns>
+        </member>
+        <member name="M:MinimalApiWithJwt.Services.IUserService.Update(MinimalApiWithJwt.Models.UserDTO)">
+            <summary>
+            Finds and update a user.
+            </summary>
+        </member>
+        <member name="T:MinimalApiWithJwt.Services.JwtTokenGenerator">
+            <summary>
+            Responsible for dealing with JWT as an authorization token.
+            </summary>
+        </member>
+    </members>
+</doc>
